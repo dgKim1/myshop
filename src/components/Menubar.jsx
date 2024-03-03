@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiShop } from "react-icons/ci";
 import AllProducts from '../pages/AllProducts';
 import { FaCartShopping } from "react-icons/fa6";
 import { HiPencilAlt } from "react-icons/hi";
-import { Login, login } from '../api/firebaseAPI';
+import { login, logout, userChange } from '../api/firebaseAPI';
+import Profile from '../ui/Profile';
 
 export default function Menubar() {
+    const [user,setUser] = useState();
+    useEffect(()=>{
+        userChange((user)=>{
+            setUser(user);
+        });
+    },[]);
+     const handleLogin = () => {
+        login().then(setUser);
+    }
+
+    const handleLogout = ()=>{
+        logout().then(setUser);
+    }
     return (
         <header className='flex justify-between items-center'>
             <Link to="/" className='flex items-center'>
@@ -26,9 +40,11 @@ export default function Menubar() {
                 <Link to="/products/new">
                     <HiPencilAlt/>
                 </Link>
-                <button onClick={login}>
-                    Login
-                </button>
+                {
+                    user&&<Profile user={user}/>
+                }
+                {user&&<button onClick={handleLogout}>Logout</button>}
+                {!user&&<button onClick={handleLogin}>Login</button>}
             </nav>
         </header>
     );
