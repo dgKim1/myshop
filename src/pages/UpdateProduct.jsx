@@ -6,6 +6,7 @@ import { updateProduct } from '../api/firebaseAPI';
 export default function UpdateProduct() {
     const [product,setProduct] = useState({});
     const [file,setFile] = useState();
+    const ids = ['file','name','color','size','price'];
     const handleChange = (e) => {
         if(e.target.name === "file"){
             e.target.files && setFile(e.target.files[0]);
@@ -20,6 +21,9 @@ export default function UpdateProduct() {
             //firebase데이터베이스에 새 제품 업로드
             updateProduct(product,data);         
         });
+        ids.map((id)=>{
+            document.getElementById(id).value = null;
+        });
     }
     return (
         <section>
@@ -28,6 +32,7 @@ export default function UpdateProduct() {
             <div>
             <label>사진 선택하기 : </label>
             <input 
+            id='file'
             type="file" 
             name='file' 
             required
@@ -38,6 +43,7 @@ export default function UpdateProduct() {
             <div className='flex'>
             <label>제품명</label>
             <input 
+            id='name'
             type="text" 
             name='name' 
             required
@@ -47,7 +53,8 @@ export default function UpdateProduct() {
             </div>
             <div>
             <label>색상</label>
-            <input 
+            <input
+            id='color' 
             type="text" 
             name="color" 
             onChange={handleChange}
@@ -57,6 +64,7 @@ export default function UpdateProduct() {
             <div>
             <label>옷 사이즈</label>
             <input 
+            id='size'
             type='text' 
             name='size' 
             required
@@ -67,6 +75,7 @@ export default function UpdateProduct() {
             <div>
             <label>가격</label>
             <input 
+            id='price'
             type="text"
             name="price" 
             required 

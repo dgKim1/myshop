@@ -77,7 +77,6 @@ export async function isAdmin(uid){
 
 export function updateProduct(product,url){
   const id = uuidv4();
-  console.log(product);
   set(ref(database, `products/${id}`), {
     ...product,
     id,
