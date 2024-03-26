@@ -6,6 +6,9 @@ module.exports = {
           'white': "rgb(255 255 255)",
           'outline': "rgb(226 232 240)"
         },
+        translate: {
+          '1/10': '10%',
+        }
       },
     plugins: [],
   }

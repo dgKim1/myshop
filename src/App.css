@@ -40,3 +40,8 @@
     transform: rotate(360deg);
   }
 }
+
+#root{
+  width: 100%;
+  height: 100%;
+}
