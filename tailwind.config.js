@@ -8,7 +8,11 @@ module.exports = {
         },
         translate: {
           '1/10': '10%',
-        }
+        },
+        spacing: {
+          "imgH": '500px',
+          "imgW":"400px"
+        },
       },
     plugins: [],
   }

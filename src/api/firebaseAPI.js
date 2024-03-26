@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, get, child,set } from "firebase/database";
+import { getDatabase, ref, get, child,set,getValue } from "firebase/database";
 import { v4 as uuidv4 } from 'uuid'
 
 const firebaseConfig = {
@@ -86,5 +86,18 @@ export function updateProduct(product,url){
     color: product.color.split(','),
     size: product.size.split(','),
     sales:0
+  });
+}
+
+
+export async function getProducts(){
+  return get(child(dbRef, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
   });
 }
