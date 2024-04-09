@@ -9,10 +9,17 @@ module.exports = {
         translate: {
           '1/10': '10%',
         },
-        spacing: {
-          "imgH": '500px',
-          "imgW":"400px"
+        margin: {
+          "10px": "10px"
         },
+        width:{
+          "imgW":"300px",
+          "30": "30px"
+        },
+        height:{
+          "imgH": '400px',
+          "30": "30px"
+        }
       },
     plugins: [],
   }
