@@ -10,15 +10,21 @@ module.exports = {
           '1/10': '10%',
         },
         margin: {
-          "10px": "10px"
+          "10px": "10px",
+          "4":"4px"
         },
         width:{
           "imgW":"300px",
-          "30": "30px"
+          "30": "30px",
+          "pg":"20px"
         },
         height:{
           "imgH": '400px',
-          "30": "30px"
+          "30": "30px",
+          "pg":"30px"
+        },
+        spacing:{
+          "50%":"50%"
         }
       },
     plugins: [],

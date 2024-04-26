@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { getProducts } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
-import ProductCard from '../ui/ProductCard';
 import ProductPages from './ProductPages';
 
 export default function AllProducts() {
