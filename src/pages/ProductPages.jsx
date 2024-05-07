@@ -8,7 +8,6 @@ export default function ProductPages({pageProduct,pageNums}) {
     const [presentPage,setPresentPage] = useState(0);
     const [pagingProducts,setPagingProducts] = useState(pageProduct[presentPage]);
     const handleClick = (e) => {
-        console.log(e.target.value);
         setPresentPage(e.target.value);
         setPagingProducts(pageProduct[e.target.value]);
     } 
@@ -33,7 +32,8 @@ export default function ProductPages({pageProduct,pageNums}) {
     }
     return (
         <>
-        <ul className='grid grid-cols-3 grid-row-3 gap-4'>
+        <div className='flex justify-center mt-10px'>
+        <ul className='grid grid-cols-3 grid-row-3 gap-25'>
             {
                 pagingProducts&&
             pagingProducts.map((product) => (
@@ -41,6 +41,7 @@ export default function ProductPages({pageProduct,pageNums}) {
             ))
             }
         </ul>
+        </div>
         <footer className='flex justify-center'>
         <ul>
         <button className='mr-4' onClick={handleFirstPageClick}>

@@ -1,7 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import { getProducts } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
 import ProductPages from './ProductPages';
+import {isUserContext} from '../Context/UserModeContext';
 
 export default function AllProducts() {
     const {isLoading,error,data:products} = useQuery({queryKey: ['products'],queryFn: getProducts});

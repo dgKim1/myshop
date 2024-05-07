@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, get, child,set,getValue } from "firebase/database";
+import { getDatabase, ref, get, child,set,update } from "firebase/database";
 import { v4 as uuidv4 } from 'uuid'
 
 const firebaseConfig = {
@@ -92,6 +92,40 @@ export function updateProduct(product,url){
 
 export async function getProducts(){
   return get(child(dbRef, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+//나의 찜목록에 물품 추가
+export async function uploadFavoriteProducts(product,uid){
+  set(ref(database, `myfavorites/${uid}/${product.name}`), {
+    ...product,
+    name: product.name,
+    price: parseInt(product.price),
+    url: product.url,
+    color: product.color,
+    size: product.size
+  });
+}
+
+//나의 찜목록에서 삭제
+export async function removeFavoriteProduct(productName,uid){
+  var updateData = {};
+  updateData[`myfavorites/${uid}/${productName}`] = null;
+  update(ref(database),updateData);
+}
+
+
+
+export async function getFavoriteProducts(uid){
+  const id = uuidv4();
+  return get(child(dbRef, `myfavorites/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
     } else {

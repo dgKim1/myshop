@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CiShop } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
@@ -12,22 +12,16 @@ import {
 } from "../api/firebaseAPI";
 import Profile from "../ui/Profile";
 import Button from "../ui/Button";
+import {isUserContext} from '../Context/UserModeContext';
 
 export default function Menubar() {
-  const [user, setUser] = useState();
+  const {user,handleUserState,handleLogin,handleLogout} = useContext(isUserContext);
   const [checkAdmin, setCheckAdmin] = useState();
-  useEffect(() => {
-    userChange((user) => {
-      setUser(user);
-    });
-  }, []);
-  const handleLogin = () => {
-    login().then(setUser);
-  };
 
-  const handleLogout = () => {
-    logout().then(setUser);
-  };
+  useEffect(() => {
+    handleUserState();
+  }, []);
+  
   return (
     <header className="flex justify-between items-center border-b pt-2 pb-4 border-bgcolor">
       <Link to="/" className="flex items-center mr-header">
