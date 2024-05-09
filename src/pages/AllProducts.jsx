@@ -8,7 +8,6 @@ export default function AllProducts() {
     const {isLoading,error,data:products} = useQuery({queryKey: ['products'],queryFn: getProducts});
     const pageProduct = new Map();
     let pageNums = [];
-    const [pagingProducts,setPagingProducts] = useState();
     //페이지별로 들어갈 상품들 세팅
     if(products){
         let temp = [];

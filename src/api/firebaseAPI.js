@@ -93,6 +93,7 @@ export function updateProduct(product,url){
 export async function getProducts(){
   return get(child(dbRef, "products")).then((snapshot) => {
     if (snapshot.exists()) {
+      console.log(snapshot.val());
       return Object.values(snapshot.val());
     } else {
       console.log("No data available");
@@ -123,15 +124,9 @@ export async function removeFavoriteProduct(productName,uid){
 
 
 
-export async function getFavoriteProducts(uid){
-  const id = uuidv4();
+export async function getHeartProducts(uid){
   return get(child(dbRef, `myfavorites/${uid}`)).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
+    }});
 }

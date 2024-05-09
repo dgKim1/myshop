@@ -1,24 +1,23 @@
-import React from 'react';
-import { getFavoriteProducts } from '../api/firebaseAPI';
+import React, { useContext } from 'react';
+import { getFavoriteProducts, getHeartProducts } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
 import ProductCard from '../ui/ProductCard';
+import { isUserContext } from '../Context/UserModeContext';
+import { type } from '@testing-library/user-event/dist/type';
 
 
 export default function MyBasket() {
-    const {isLoading,error,data:products} = useQuery({queryKey: ['favorite'],queryFn: getFavoriteProducts()});
+    const {user} = useContext(isUserContext);
+    const {isLoading,error,data: heartProducts} = useQuery({queryKey: ['MyHeartProducts'],queryFn: ()=>getHeartProducts(user.uid)});
+    console.log(heartProducts);
     return (
         
         <ul className='grid grid-cols-1 gap-25'>
             {
-                products&&
-            products.map((product) => (
+                heartProducts&&
+            heartProducts.map((product) => (
                     <ProductCard product={product}/>
             ))
-            }
-            {
-                !products&&(<div>
-                    찜하신 상품 목록이 없습니다
-                </div>)
             }
         </ul>
 

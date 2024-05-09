@@ -29,8 +29,7 @@ export default function ProductDetail() {
     else{
         removeFavoriteProduct(product.name,user.uid);
     }
-    
-    return (
+return (
         <div >
             <h1>{location.name}</h1>
             <p>{location.color}</p>
