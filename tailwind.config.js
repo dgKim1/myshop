@@ -7,7 +7,8 @@ module.exports = {
           'outline': "rgb(226 232 240)",
           'productName': "#a3a3a3",
           'heart': "#f7365a",
-          
+          "recommend": "#91d7fa",
+          "bttnOnRec": "#5338ff",
           'black':"#363534"
         },
         translate: {
@@ -32,7 +33,8 @@ module.exports = {
           "4": "4px",
           "50%":"50%",
           "25": "25px",
-          "28":"28px"
+          "28":"28px",
+          "20":"20px"
         }
       },
     plugins: [],

@@ -85,7 +85,8 @@ export function updateProduct(product,url){
     url,
     color: product.color.split(','),
     size: product.size.split(','),
-    sales:0
+    sales:0,
+    recommend: 0
   });
 }
 
@@ -130,3 +131,31 @@ export async function getHeartProducts(uid){
       return Object.values(snapshot.val());
     }});
 }
+
+//추천수 관련 메소드
+
+// export async function getRecommend(productId){
+//   return get(child(dbRef, `products/${productId}/recommend`)).then((snapshot) => {
+//     if (snapshot.exists()) {
+//       return parseInt(snapshot.val());
+//     }});
+// }
+
+
+export async function setRecommend(productId,product,recommend){
+  set(ref(database,`products/${productId}`),{
+    ...product,
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    url: product.url,
+    color: product.color,
+    size: product.size,
+    sales: product.sales,
+    recommend: recommend
+  });
+  
+}
+
+
+
