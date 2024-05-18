@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Top from "./pages/Top";
 import UpdateProduct from "./pages/UpdateProduct";
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {index: true,path:"/",element: <Home/> },
       {
-        path:"/products",element: <AllProducts/>
+        path:"/products",element: <AllProducts />
       },
       {
         path:"/products/new",element: <UpdateProduct/>

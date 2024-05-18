@@ -1,46 +1,66 @@
 import React,{useContext, useEffect, useState} from 'react';
-import { getProducts } from '../api/firebaseAPI';
+import { getProducts, getRecommendProducts } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
 import ProductPages from './ProductPages';
 import {isUserContext} from '../Context/UserModeContext';
+import { useOutlet, useOutletContext } from 'react-router-dom';
 
 export default function AllProducts() {
     const {isLoading,error,data:products} = useQuery({queryKey: ['products'],queryFn: getProducts});
-    const pageProduct = new Map();
-    let pageNums = [];
-    //페이지별로 들어갈 상품들 세팅
+    useEffect(()=>{
+
+    },[products]);
+    let recommendProducts=[];//추천순 정렬 products
+    let salesProducts=[];
+    let allProducts = [];
+    const {filter,filters,changeFilter} = useOutletContext();
+
+
     if(products){
-        let temp = [];
-        let start = 0;
-        products.map((product,index)=>{
-            if(start === parseInt(index/9)) {temp.push(product)}
-            else{
-                pageProduct[start] = temp;
-                temp = [];
-                start++;
-                temp.push(product);
-            }
-        });
-        //마지막 페이지에 들어갈 제품들 담고 초기화
-        pageProduct[start]=temp;
-        start =0;
-        temp = [];   
-        //페이지 번호 세팅
-        setPageNums(parseInt(products.length/9)+1);  
+    allProducts = products;
+    console.log(products);
+    
+    //추천순으로 정렬하여 products 필터링
+    recommendProducts = Object.assign([],products);//깊은 복사
+    recommendProducts.sort(function(a,b){
+                return b.recommend - a.recommend;//내림차순
+            });
+
     }
-    //페이지 번호 세팅 함수
-    function setPageNums(pages){
-        for(let i=0;i<pages;i++){
-            pageNums.push(i);
-        }
-    }
+
+    //판매순으로 정렬하여 products 필터링
+    salesProducts = Object.assign([],products);//깊은 복사
+    salesProducts.sort(function(a,b){
+                return b.sales - a.sales;//내림차순
+            });
+
+
+    
     return (
         <>
-        {
-            pageProduct[0]&&pageNums&&
-        <ProductPages pageProduct={pageProduct} pageNums={pageNums}/>
-}
+        <div className='flex'>
+        <ul className='flex'>
+                {
+                filters.map((value,index)=>(                    <li key={index}>
+                        <button onClick={()=>changeFilter(value)}>{value}</button>
+                    </li>
+                ))
+                }
+            </ul>
+            </div>
+            {
+                filter==="추천순"&&recommendProducts&& <ProductPages products={recommendProducts}/>
+            }
+            {
+                filter==="All"&&allProducts&& <ProductPages products={allProducts}/>
+            }
+            {
+                filter==="판매순"&&salesProducts&& <ProductPages products={salesProducts}/>
+            }
         </>
     );
-}
+        }
+
+
+
 

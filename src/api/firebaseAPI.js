@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, get, child,set,update } from "firebase/database";
+import { getDatabase, ref, get, child,set,update, query, orderByChild } from "firebase/database";
 import { v4 as uuidv4 } from 'uuid'
 
 const firebaseConfig = {
@@ -94,7 +94,6 @@ export function updateProduct(product,url){
 export async function getProducts(){
   return get(child(dbRef, "products")).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
       return Object.values(snapshot.val());
     } else {
       console.log("No data available");
@@ -102,6 +101,11 @@ export async function getProducts(){
   }).catch((error) => {
     console.error(error);
   });
+}
+
+export async function getRecommendProducts(){
+  const recommendRef = query(ref(database,"products"),orderByChild("recommend"));
+  return recommendRef.toJSON();
 }
 
 //나의 찜목록에 물품 추가
@@ -132,14 +136,6 @@ export async function getHeartProducts(uid){
     }});
 }
 
-//추천수 관련 메소드
-
-// export async function getRecommend(productId){
-//   return get(child(dbRef, `products/${productId}/recommend`)).then((snapshot) => {
-//     if (snapshot.exists()) {
-//       return parseInt(snapshot.val());
-//     }});
-// }
 
 
 export async function setRecommend(productId,product,recommend){
