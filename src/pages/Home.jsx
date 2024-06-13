@@ -1,10 +1,11 @@
 import React from 'react';
+import background from "../images/background.jpg";
+
 
 export default function Home() {
     return (
-        <div>
-            <h1>Best10</h1>
-            <img src=''/>
+        <div className='flex justify-center'>
+        <img src={background} alt='배경화면' />
         </div>
     );
 }

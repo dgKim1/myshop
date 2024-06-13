@@ -23,29 +23,27 @@ export default function Menubar() {
   }, []);
   
   return (
-    <header className="flex justify-between items-center border-b pt-2 pb-4 border-bgcolor">
-      <Link to="/" className="flex items-center mr-header">
-        <CiShop className="text-4xl text-bgcolor" />
-        <h1 className="font-bold text-4xl text-bgcolor">MyShop</h1>
-      </Link>
-      <nav className="flex items-center">
+    <>
+    <header className="flex justify-between items-center py-25 bg-bgcolor">
+      <nav className="flex items-center ml-header">
         <Link
-          to="/best30"
-          className="text-xl text-bgcolor hover:scale-105 hover:brightness-110 mr-10px"
+          to="/best10"
+          className={`text-xl text-white hover:scale-105 hover:brightness-110 mr-10px`}
+
         >
-          <h1>best30</h1>
+          <h1 className="text-white">best10</h1>
         </Link>
         <Link
           to="/products"
-          className="text-xl text-bgcolor hover:scale-105 hover:brightness-110 mr-10px"
+          className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
         >
-          <h1>AllProducts</h1>
+          <h1 className="text-white">AllProducts</h1>
         </Link>
         <Link
           to="/basket"
-          className="text-xl text-bgcolor hover:scale-105 hover:brightness-110 mr-10px"
+          className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
         >
-          <FaCartShopping />
+          <FaCartShopping className="text-white"/>
         </Link>
         {user && <Profile user={user} />}
         {user &&
@@ -55,14 +53,25 @@ export default function Menubar() {
           checkAdmin && (
             <Link
               to="/products/new"
-              className="text-xl text-bgcolor hover:scale-105 hover:brightness-110 mr-10px"
+              className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
             >
-              <FaCloudUploadAlt />
+              <FaCloudUploadAlt 
+              className="text-white" 
+              />
             </Link>
           )}
         {user && <Button onClick={handleLogout} text="LogOut" />}
         {!user && <Button onClick={handleLogin} text="LogIn" />}
       </nav>
     </header>
+    <div className='flex justify-center'>
+      <Link 
+      to="/" 
+      className="flex items-center py-15 mr-0">
+        <CiShop className="text-4xl text-bgcolor" />
+        <h1 className="font-bold text-2xl text-bgcolor">MyShop</h1>
+      </Link>
+    </div>
+    </>
   );
 }

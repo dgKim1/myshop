@@ -11,15 +11,21 @@ export default function MyBasket() {
     const {isLoading,error,data: heartProducts} = useQuery({queryKey: ['MyHeartProducts'],queryFn: ()=>getHeartProducts(user.uid)});
     console.log(heartProducts);
     return (
-        
+        <>
         <ul className='grid grid-cols-1 gap-25'>
             {
-                heartProducts&&
+                user&&heartProducts&&
             heartProducts.map((product) => (
                     <ProductCard product={product}/>
             ))
             }
         </ul>
+        <div className='flex justify-center'>
+        {
+            !user&&<h className="text-bgcolor">로그인을 하셔야 됩니다!!</h>
+        }
+        </div>
+        </>
 
     );
 }

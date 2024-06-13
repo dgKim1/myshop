@@ -8,8 +8,8 @@ import MyBasket from './pages/MyBasket';
 import ProductDetail from './pages/ProductDetail';
 import AllProducts  from './pages/AllProducts';
 import Home from "./pages/Home";
-import Top from "./pages/Top";
 import UpdateProduct from "./pages/UpdateProduct";
+import BestProdcuts from './pages/BestProdcuts';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         path:"/products/:id",element: <ProductDetail/>
       },
       {
-        path:"/best30",element: <Top/>
+        path:"/best10",element: <BestProdcuts/>
       }
     ]
   }

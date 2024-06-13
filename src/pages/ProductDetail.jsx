@@ -1,15 +1,15 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../ui/Button';
 import LoveBttn from '../ui/LoveBttn';
-import { removeFavoriteProduct, uploadFavoriteProducts } from '../api/firebaseAPI';
+import { getHeartProducts, removeFavoriteProduct, uploadFavoriteProducts } from '../api/firebaseAPI';
 import { isUserContext } from '../Context/UserModeContext';
 
 export default function ProductDetail() {
-    const [bttnOn,setBttnOn] = useState(false);
     const {user} = useContext(isUserContext);
     //color,name,price,sales,size,url
     const location = useLocation().state;
+    const [bttnOn,setBttnOn] = useState(location.heartBttn);
     const product = {
         name: location.name,
         color: location.color,
@@ -17,6 +17,7 @@ export default function ProductDetail() {
         price: location.price,
         size: location.size,
     }
+    
 
     const handleLoveBttn = ()=>{
         setBttnOn(!bttnOn);

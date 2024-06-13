@@ -15,6 +15,10 @@ export default function AllProducts() {
     let allProducts = [];
     const {filter,filters,changeFilter} = useOutletContext();
 
+    const selectEvent = ()=>{
+
+    }
+
 
     if(products){
     allProducts = products;
@@ -35,18 +39,25 @@ export default function AllProducts() {
             });
 
 
+    function  changeSelect() {
+        var selectFilter = document.getElementById('selectFilter');
+        var selectValue = selectFilter.options[selectFilter.selectedIndex].value;
+        changeFilter(selectValue);
+        
+    }
+
+
     
     return (
         <>
         <div className='flex'>
-        <ul className='flex'>
+        <select className='flex' id='selectFilter' onChange={()=>changeSelect()}>
                 {
-                filters.map((value,index)=>(                    <li key={index}>
-                        <button onClick={()=>changeFilter(value)}>{value}</button>
-                    </li>
+                filters.map((value,index)=>(                    
+                        <option value={value}>{value}</option>
                 ))
                 }
-            </ul>
+            </select>
             </div>
             {
                 filter==="추천순"&&recommendProducts&& <ProductPages products={recommendProducts}/>
@@ -60,6 +71,9 @@ export default function AllProducts() {
         </>
     );
         }
+
+
+
 
 
 
