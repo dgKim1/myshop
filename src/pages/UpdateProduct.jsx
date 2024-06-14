@@ -27,69 +27,70 @@ export default function UpdateProduct() {
         });
     }
     return (
-        <section className='relative justify-center items-center w-4/5 translate-x-1/10
+        <div className='flex justify-center '>
+        <section className='relative justify-center items-center w-4/5
          border-bgcolor border-2 rounded-md pb-4 px-2 top-3'>
             <h1 className='text-center text-2xl font-bold my-3'>신상품 업로드</h1>
         {file && <img src={URL.createObjectURL(file)} alt="selectFile" className='justify-center'/>}
         <form className='flex flex-col' onSubmit={handleSubmit}>
             <div className='flex items-center mb-4'>
-            <label className='bg-bgcolor text-xl text-white rounded-md p-1'> 사진 선택하기 </label>&nbsp;
             <input 
             id='file'
             type="file" 
             name='file' 
             required
             onChange={handleChange}
-            className='border-bgcolor border-4 p-1'
+            className='border-bgcolor border-2 p-1'
             
             />
             </div>
             <div className='flex items-center mb-4'>
-            <label className='bg-bgcolor text-xl text-white rounded-md p-1'>제품명</label>&nbsp;
             <input 
             id='name'
             type="text" 
             name='name' 
             required
+            placeholder='제품명'
             onChange={handleChange}
-            className='border-bgcolor border-4 p-1'
+            className='border-bgcolor border-2 p-1 size-full'
             />
             </div>
             <div className='flex items-center mb-4'>
-            <label className='bg-bgcolor text-xl text-white rounded-md p-1'>색상</label>&nbsp;
             <input
             id='color' 
             type="text" 
             name="color" 
             onChange={handleChange}
-            className='border-bgcolor border-4 p-1'
+            className='border-bgcolor border-2 p-1 size-full'
+            placeholder='색상'
             />
             </div>
             <div className='flex items-center mb-4'>
-            <label className='bg-bgcolor text-xl text-white rounded-md p-1'>옷 사이즈</label>&nbsp;
             <input 
             id='size'
             type='text' 
             name='size' 
             required
             onChange={handleChange}
-            className='border-bgcolor border-4 p-1'
+            className='border-bgcolor border-2 p-1 size-full'
+            placeholder='옷 사이즈'
             />
             </div>
             <div className='flex items-center mb-4'>
-            <label className='bg-bgcolor text-xl text-white rounded-md p-1'>가격</label>&nbsp;
             <input 
             id='price'
             type="text"
             name="price" 
             required 
             onChange={handleChange}
-            className='border-bgcolor border-4 p-1'
+            className='border-bgcolor border-2 p-1 size-full'
+            placeholder='가격'
             />
             </div>
             <Button text="등록하기"/>
         </form>
         </section>
+        </div>
     );
 }
 

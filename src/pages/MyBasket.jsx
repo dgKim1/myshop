@@ -9,14 +9,13 @@ import { type } from '@testing-library/user-event/dist/type';
 export default function MyBasket() {
     const {user} = useContext(isUserContext);
     const {isLoading,error,data: heartProducts} = useQuery({queryKey: ['MyHeartProducts'],queryFn: ()=>getHeartProducts(user.uid)});
-    console.log(heartProducts);
     return (
         <>
         <ul className='grid grid-cols-1 gap-25'>
             {
                 user&&heartProducts&&
             heartProducts.map((product) => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} isBasket={true}/>
             ))
             }
         </ul>

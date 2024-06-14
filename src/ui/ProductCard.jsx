@@ -6,7 +6,8 @@ import { getHeartProducts, getRecommend,setRecommend } from '../api/firebaseAPI'
 import { useQuery } from '@tanstack/react-query';
 import { isUserContext } from '../Context/UserModeContext';
 
-export default function ProductCard({product:{color,id,name,price,sales,size,url,recommend}}) {
+export default function ProductCard({product:{color,id,name,price,sales,size,url,recommend},isBasket}) {
+    isBasket = null;
     const product ={
         id,
         name,
@@ -52,7 +53,7 @@ export default function ProductCard({product:{color,id,name,price,sales,size,url
             <img src={url} alt={name} className='w-imgW h-imgH'/>
             </Link>
             <div className='flex items-center'>
-            <p className='text-productName'>{name}</p><RecommendBtttn click={click} handleClickBttn={handleClick} bttnOn={bttnOn} recommend={numRec}/>
+            <p className='text-productName'>{name}</p>{!isBasket&&(<RecommendBtttn click={click} handleClickBttn={handleClick} bttnOn={bttnOn} recommend={numRec}/>)}
             </div>
             <p className='text-productName'>{price}</p>
         </div>
