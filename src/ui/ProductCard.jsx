@@ -46,7 +46,6 @@ export default function ProductCard({product:{color,id,name,price,sales,size,url
         }
     }
 
-    console.log(isBasket);
     
     return (
         <div>

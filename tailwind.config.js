@@ -10,7 +10,8 @@ module.exports = {
           "recommend": "#91d7fa",
           "bttnOnRec": "#5338ff",
           'black':"#363534",
-          "menu":"#c6f5f7"
+          "menu":"#c6f5f7",
+          "footer": "#8c8a84"
 
         },
         translate: {
@@ -25,12 +26,19 @@ module.exports = {
         width:{
           "imgW":"300px",
           "30": "30px",
-          "pg":"20px"
+          "sw":"250px",
+          "pg":"20px",
+          "1/3": "4/12",
+          "full":"full",
+          "slider": "750px"
         },
         height:{
-          "imgH": '400px',
+          "imgH": '300px',
           "30": "30px",
-          "pg":"30px"
+          "sh":"250px",
+          "pg":"30px",
+          "full": "full"
+
         },
         spacing:{
           "2":"2px",
@@ -39,7 +47,8 @@ module.exports = {
           "25": "25px",
           "28":"28px",
           "20":"20px",
-          "15":"15px"
+          "15":"15px",
+          "slider":"750px"
         }
       },
     plugins: [],

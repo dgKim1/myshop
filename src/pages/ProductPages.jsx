@@ -30,9 +30,6 @@ export default function ProductPages({products}) {
     start =0;
     temp = [];   
     const [pagingProducts,setPagingProducts] = useState(pageProduct[0]);
-    console.log(pageProduct[presentPage]);
-    console.log(pagingProducts);
-
 
     ///클릭 이벤트(페이지 이동)//
     const handleClick = (e) => {
@@ -49,14 +46,20 @@ export default function ProductPages({products}) {
         setPagingProducts(pageProduct[pageNums.length-1]);
     }
     const handleNextClick = ()=>{
-        if(presentPage === pageNums-1) return;
+        if(presentPage >= pageNums.length-1) {
+            console.log(presentPage);
+            setPresentPage(pageNums.length-1);
+            setPagingProducts(pageProduct[presentPage]);
+            return;
+        }
+
         setPresentPage(presentPage+1);
-        setPagingProducts(pageProduct[presentPage+1]);
+        setPagingProducts(pageProduct[presentPage]);
     }
     const handlePrevClick = ()=>{
-        if(presentPage===0) return;
+        if(presentPage<=0) return;
         setPresentPage(presentPage-1);
-        setPagingProducts(pageProduct[presentPage-1]);
+        setPagingProducts(pageProduct[presentPage]);
     }
     return (
         <>

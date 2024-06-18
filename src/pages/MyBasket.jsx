@@ -3,7 +3,6 @@ import { getFavoriteProducts, getHeartProducts } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
 import ProductCard from '../ui/ProductCard';
 import { isUserContext } from '../Context/UserModeContext';
-import { type } from '@testing-library/user-event/dist/type';
 
 
 export default function MyBasket() {

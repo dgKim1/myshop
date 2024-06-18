@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import ProductPages from './ProductPages';
 import {isUserContext} from '../Context/UserModeContext';
 import { useOutlet, useOutletContext } from 'react-router-dom';
+import { MdFilterAlt } from "react-icons/md";
 
 export default function AllProducts() {
     const {isLoading,error,data:products} = useQuery({queryKey: ['products'],queryFn: getProducts});
@@ -14,10 +15,6 @@ export default function AllProducts() {
     let salesProducts=[];
     let allProducts = [];
     const {filter,filters,changeFilter} = useOutletContext();
-
-    const selectEvent = ()=>{
-
-    }
 
 
     if(products){
@@ -51,6 +48,7 @@ export default function AllProducts() {
     return (
         <>
         <div className='flex'>
+        <MdFilterAlt/>
         <select className='flex' id='selectFilter' onChange={()=>changeSelect()}>
                 {
                 filters.map((value,index)=>(                    

@@ -10,9 +10,12 @@ import AllProducts  from './pages/AllProducts';
 import Home from "./pages/Home";
 import UpdateProduct from "./pages/UpdateProduct";
 import BestProdcuts from './pages/BestProdcuts';
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -42,7 +45,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
     <RouterProvider router={router}/>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
