@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-quer
 import { IsUserProvider} from './Context/UserModeContext';
 import { useState } from 'react';
 import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick-theme.css';
 
 
 const queryClient = new QueryClient();
@@ -20,14 +20,25 @@ function App() {
       <IsUserProvider>
       <Menubar/>
       <Outlet context={{filter,filters,changeFilter}}/>
-      <section>
-      <footer className='left-50%'>
-        <ul className='text-footer'>010-3064-3556</ul>
-        <ul className='text-footer'>Mon-Fri:10am ~ 5pm</ul>
-        <ul className='text-footer'>Break Time:12pm ~ 1pm</ul>
-        <ul className='text-footer'>Holiday: sat,sun</ul>
-        <ul className='text-footer'>Copyright © MY SHOP</ul>
-      </footer>
+      <section className='foot'>
+      <div className='flex-col items-center'>
+        <div className='text-footer foot-text'>
+          <span>전화번호: 010-3064-3556</span>
+          <span className='bar'></span>
+          <span>평일: 10am ~ 5pm</span>
+          <span className='bar'></span>
+          <span>브레이크 타임: 12pm ~ 1pm</span>
+          <span className='line-jump'></span>
+          <span>공휴일: sat,sun</span>
+          <span className='bar'></span>
+          <span>Copyright © MY SHOP</span>
+        </div>
+        <div class="sns">
+            <a href="https://www.facebook.com/sixshop.page" class="btn-facebook ico-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com/sixshop_official" class="btn-instagram ico-instagram-line" target="_blank"></a>
+            <a href="https://www.youtube.com/channel/UCPsgg6_D_4GLO18M5_TluGg" class="btn-youtube ico-youtube" target="_blank"></a>
+        </div>
+      </div>
       </section>
       </IsUserProvider>
     </QueryClientProvider>

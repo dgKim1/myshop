@@ -48,11 +48,11 @@ export default function AllProducts() {
     return (
         <>
         <div className='flex'>
-        <MdFilterAlt/>
-        <select className='flex' id='selectFilter' onChange={()=>changeSelect()}>
+        <MdFilterAlt className='text-bgcolor h-20 w-20 ml-4'/>
+        <select className='flex border-solid border-2 border-bgcolor rounded-md focus:border-focus-select border-2' id='selectFilter' onChange={()=>changeSelect()}>
                 {
                 filters.map((value,index)=>(                    
-                        <option value={value}>{value}</option>
+                        <option className='bg-option-bg text-white' value={value}>{value}</option>
                 ))
                 }
             </select>

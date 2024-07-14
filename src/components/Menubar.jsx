@@ -28,20 +28,20 @@ export default function Menubar() {
       <nav className="flex items-center ml-header">
         <Link
           to="/best10"
-          className={`text-xl text-white hover:scale-105 hover:brightness-110 mr-10px`}
+          className={`text-xl text-white hover:scale-125 hover:brightness-110 mr-15`}
 
         >
           <h1 className="text-white">best10</h1>
         </Link>
         <Link
           to="/products"
-          className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
+          className="text-xl text-white hover:scale-125 hover:brightness-110 mr-15"
         >
           <h1 className="text-white">AllProducts</h1>
         </Link>
         <Link
           to="/basket"
-          className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
+          className="text-xl text-white hover:scale-125 hover:brightness-110 mr-15"
         >
           <FaCartShopping className="text-white"/>
         </Link>
@@ -53,23 +53,23 @@ export default function Menubar() {
           checkAdmin && (
             <Link
               to="/products/new"
-              className="text-xl text-white hover:scale-105 hover:brightness-110 mr-10px"
+              className="text-xl text-white hover:scale-125 hover:brightness-110 mr-15"
             >
               <FaCloudUploadAlt 
               className="text-white" 
               />
             </Link>
           )}
-        {user && <Button onClick={handleLogout} text="LogOut" />}
-        {!user && <Button onClick={handleLogin} text="LogIn" />}
+        {user && <Button onClick={handleLogout} text="LogOut" className="mr-15"/>}
+        {!user && <Button onClick={handleLogin} text="LogIn" className="mr-15"/>}
       </nav>
     </header>
     <div className='flex justify-center'>
       <Link 
       to="/" 
       className="flex items-center py-15 mr-0">
-        <CiShop className="text-4xl text-bgcolor" />
-        <h1 className="font-bold text-2xl text-bgcolor">MyShop</h1>
+        <CiShop className="text-4xl text-bgcolor h-40 w-40" />
+        <h1 className="font-bold text-3xl text-bgcolor">MyShop</h1>
       </Link>
     </div>
     </>

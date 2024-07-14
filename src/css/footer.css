@@ -1,0 +1,26 @@
+.foot{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e1e2e3;
+    width: 90%;
+    margin-top: 30px;
+    transform: translate(5%);
+}
+
+.foot-text{
+    margin-top: 1em;
+}
+
+
+.bar{
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: #e1e2e3;
+    vertical-align: baseline;
+    margin: 0 10px;
+}
+
+.line-jump{
+    display: block;
+}

@@ -3,10 +3,11 @@ import ProductCard from '../ui/ProductCard';
 import PageButton from '../ui/PageButton';
 import { GrCaretNext,GrCaretPrevious } from "react-icons/gr";
 import { TbPlayerTrackNextFilled,TbPlayerTrackPrevFilled } from "react-icons/tb";
+import {footer} from '../css/footer.css';
 
 export default function ProductPages({products}) {
     let pageProduct = new Map();
-    const [presentPage,setPresentPage] = useState(0);
+    let [presentPage,setPresentPage] = useState(0);
         //페이저 번호 세팅
     let pageNums = [];
     const pages = parseInt(products.length/9)+1;
@@ -32,7 +33,7 @@ export default function ProductPages({products}) {
     const [pagingProducts,setPagingProducts] = useState(pageProduct[0]);
 
     ///클릭 이벤트(페이지 이동)//
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         setPresentPage(e.target.value);
         setPagingProducts(pageProduct[e.target.value]);
     } 
@@ -54,13 +55,17 @@ export default function ProductPages({products}) {
         }
 
         setPresentPage(presentPage+1);
-        setPagingProducts(pageProduct[presentPage]);
+        setPagingProducts(pageProduct[presentPage+1]);
     }
     const handlePrevClick = ()=>{
         if(presentPage<=0) return;
         setPresentPage(presentPage-1);
-        setPagingProducts(pageProduct[presentPage]);
+        setPagingProducts(pageProduct[presentPage-1]);
     }
+
+    useEffect(()=>{
+
+    },[presentPage]);
     return (
         <>
         <div className='flex justify-center mt-10px'>

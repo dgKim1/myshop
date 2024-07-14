@@ -45,16 +45,32 @@ export default function MySlider({bestProducts}) {
         <div className='flex flex-col items-center'>
         <Slider {...settings} className='w-slider'>
           <div className='border-footer mr-4'>
-          <img src={bestProducts[0].url} slt="1" className='w-sw h-sh' />
+          <img src={bestProducts[0].url} alt="1" className='w-sw h-sh' />
           </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[1].url} alt="2" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[2].url} alt="3" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[3].url} alt="4" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[4].url} alt="5" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[5].url} alt="6" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[6].url} alt="7" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[7].url} alt="8" className='w-sw h-sh'/>
+          </div>
+          <div className='border-footer mr-4'>
           <img src={bestProducts[8].url} alt="9" className='w-sw h-sh'/>
+          </div>
         </Slider>
         </div>
       );

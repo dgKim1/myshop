@@ -5,6 +5,7 @@ import { getProducts } from '../api/firebaseAPI';
 import MySlider from '../ui/MySlider';
 
 
+
 export default function Home() {
 
     const {isLoading,error,data:products} = useQuery({queryKey: ['products'],queryFn: getProducts});
@@ -19,13 +20,13 @@ export default function Home() {
     
     return (
         <>
-        <div className='flex flex-col justify-center'>
+        <div className='flex flex-col justify-center '>
         <img src={background} alt='배경화면' className='h-imgH' />
         </div>
         <div className='flex flex-col items-center'>
             {bestProducts&&<h1 className='font-bold text-2xl my-10px'>베스트 상품</h1>}
             {bestProducts&&<MySlider bestProducts={bestProducts}/>}
-            </div>
+        </div>
         </>
         
     );
