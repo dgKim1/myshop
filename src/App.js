@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import Menubar from './components/Menubar';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { IsUserProvider} from './Context/UserModeContext';
 import { useState } from 'react';
+import footer from './css/footer.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -21,7 +22,7 @@ function App() {
       <Menubar/>
       <Outlet context={{filter,filters,changeFilter}}/>
       <section className='foot'>
-      <div className='flex-col items-center'>
+      <div className='flex-col items-center text-footer foot-text'>
         <div className='text-footer foot-text'>
           <span>전화번호: 010-3064-3556</span>
           <span className='bar'></span>
@@ -33,11 +34,7 @@ function App() {
           <span className='bar'></span>
           <span>Copyright © MY SHOP</span>
         </div>
-        <div class="sns">
-            <a href="https://www.facebook.com/sixshop.page" class="btn-facebook ico-facebook" target="_blank"></a>
-            <a href="https://www.instagram.com/sixshop_official" class="btn-instagram ico-instagram-line" target="_blank"></a>
-            <a href="https://www.youtube.com/channel/UCPsgg6_D_4GLO18M5_TluGg" class="btn-youtube ico-youtube" target="_blank"></a>
-        </div>
+
       </div>
       </section>
       </IsUserProvider>

@@ -3,7 +3,7 @@ import ProductCard from '../ui/ProductCard';
 import PageButton from '../ui/PageButton';
 import { GrCaretNext,GrCaretPrevious } from "react-icons/gr";
 import { TbPlayerTrackNextFilled,TbPlayerTrackPrevFilled } from "react-icons/tb";
-import {footer} from '../css/footer.css';
+import Pagination from 'react-bootstrap/Pagination'
 
 export default function ProductPages({products}) {
     let pageProduct = new Map();
@@ -99,6 +99,7 @@ export default function ProductPages({products}) {
         <TbPlayerTrackNextFilled onClick={handleLastPageClick} className='text-bgcolor'/>
         </button>
         </footer>
+
         </>
     );
 }

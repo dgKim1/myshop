@@ -5,8 +5,10 @@ import RecommendBtttn from "./RecommendBttn";
 import { getHeartProducts, getRecommend,setRecommend } from '../api/firebaseAPI';
 import { useQuery } from '@tanstack/react-query';
 import { isUserContext } from '../Context/UserModeContext';
+import Card from 'react-bootstrap/Card';
+import { CardBody, CardImg, CardText } from 'react-bootstrap';
 
-export default function ProductCard({product:{color,id,name,price,sales,size,url,recommend},isBasket}) {
+export default function ProductCard({product:{color,id,name,price,sales,size,url,recommend,productInfo},isBasket}) {
     const product ={
         id,
         name,
@@ -15,7 +17,8 @@ export default function ProductCard({product:{color,id,name,price,sales,size,url
         color,
         size,
         sales,
-        recommend
+        recommend,
+        productInfo
       }
     //찜하기 버튼 세팅(찜한 물품의 경우 찜버튼을 클릭된 상태)
     const {user} = useContext(isUserContext);
@@ -48,15 +51,26 @@ export default function ProductCard({product:{color,id,name,price,sales,size,url
 
     
     return (
-        <div>
-            <Link to={`/products/${id}`} state={{color,name,price,sales,size,url,heartBttn}} >
-            <img src={url} alt={name} className='w-imgW h-imgH'/>
-            </Link>
-            <div className='flex items-center'>
-            <p className='text-productName'>{name}</p>
+        <div className='max-w-productInfo'>
+            <Card>
+            <Link to={`/products/${id}`} state={{color,name,price,sales,size,url,heartBttn,productInfo}} >
+        <Card.Img  variant="top" src={url} alt={name} className='w-imgW h-imgH' />
+        </Link>
+        <Card.Body>
+          <Card.Title>
+          <div className='flex items-center'>
+          <h3 className='text-black'>{name}</h3>
             {isBasket==null&&<RecommendBtttn click={click} handleClickBttn={handleClick} bttnOn={bttnOn} recommend={numRec}/>}
             </div>
-            <p className='text-productName'>{price}</p>
+          </Card.Title>
+          <Card.Text>
+          <p className='text-black'>{price}₩</p>
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className=" text-productName max-w-productInfo">{productInfo? productInfo : "상품에 대한 상세정보"}</small>
+        </Card.Footer>
+      </Card>
         </div>
     );
 }

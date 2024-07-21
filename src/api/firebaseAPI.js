@@ -86,7 +86,8 @@ export function updateProduct(product,url){
     color: product.color.split(','),
     size: product.size.split(','),
     sales:0,
-    recommend: 0
+    recommend: 0,
+    productInfo: product.productInfo
   });
 }
 
@@ -148,6 +149,7 @@ export async function setRecommend(productId,product,recommend){
     color: product.color,
     size: product.size,
     sales: product.sales,
+    productInfo: product.productInfo,
     recommend: recommend
   });
   

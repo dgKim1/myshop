@@ -23,7 +23,8 @@ module.exports = {
           "15": "15px",
           "4":"4px",
           "header" : "1100px",
-          "0": "0px"
+          "0": "0px",
+          "upload-b": "8px"
         },
         width:{
           "imgW":"300px",
@@ -34,8 +35,14 @@ module.exports = {
           "pg":"20px",
           "1/3": "4/12",
           "full":"full",
-          "slider": "750px"
+          "slider": "750px",
+          "80%": "80%"
         },
+        maxWidth: {
+          "productInfo":"300px"
+
+        }
+        ,
         height:{
           "imgH": '300px',
           "20":"20px",
@@ -43,10 +50,12 @@ module.exports = {
           "40":"40px",
           "sh":"250px",
           "pg":"30px",
-          "full": "full"
+          "full": "full",
+          "80%": "80%"
 
         },
         spacing:{
+          "1":"1px",
           "2":"2px",
           "4": "4px",
           "50%":"50%",
